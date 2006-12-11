@@ -1,0 +1,29 @@
+## Classes
+exportClasses(
+              "remoteDB",
+	      "localDB"
+              )
+
+
+## Primary interface
+exportMethods(
+	      "dbCreate",
+              "dbInsert",
+              "dbFetch",
+              "dbExists",
+              "dbList",
+              "dbDelete",
+	      "dbSync",
+              "dbUnlink"
+              )
+
+## Imports
+importFrom(tools, md5sum)
+import(filehash)
+
+exportMethods(
+              "setDir<-",
+              "initialize"
+              )
+
+export("stashROption")

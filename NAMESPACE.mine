@@ -1,0 +1,20 @@
+## Classes
+exportClasses(
+              "filehashRemote",
+	      "filehashLocal"
+              )
+
+
+## Primary interface
+exportMethods(
+              "dbInsert",
+              "dbFetch",
+              "dbExists",
+              "dbList",
+              "dbDelete",
+		  "dbSync"
+              )
+
+## Imports
+import(tools)
+import(filehash)
