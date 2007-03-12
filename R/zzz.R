@@ -1,8 +1,8 @@
 .onAttach <- function(lib, pkg) {
     dcf <- read.dcf(file.path(lib, pkg, "DESCRIPTION"))
-    msg <- gettextf("%s (version %s %s)", dcf[, "Title"],
+    msg <- gettextf("%s (%s %s)", dcf[, "Title"],
                     as.character(dcf[, "Version"]), dcf[, "Date"])
-    writeLines(strwrap(msg))
+    message(paste(strwrap(msg), collapse = "\n"))    
 }
 
 .onLoad <- function(lib, pkg) {
@@ -14,12 +14,22 @@
     }
     if(!capabilities("http/ftp"))
         warning("'http/ftp' capabilities not available")
-    ## .stashROptions$quietDownload <- FALSE
     stashROption("quietDownload", FALSE)
+    stashROption("offline", FALSE)
 }    
 
 .stashROptions <- new.env()
 
+## Valid options:
+##
+## quietDownload:  Should download progress be shown?
+## offline:  Are we connected to the Internet [not yet implemented]
+
 stashROption <- function(name, value) {
-    assign(name, value, .stashROptions)
+    if(missing(name))
+        as.list(.stashROptions)
+    else if(missing(value))
+        get(name, .stashROptions, inherits = FALSE)
+    else 
+        assign(name, value, .stashROptions, inherits = FALSE)
 }
