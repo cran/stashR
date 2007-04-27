@@ -8,9 +8,10 @@ dir <- file.path(wd,"testDir")
 
 ##########################################################################
 ## Test objects of class 'remoteDB'
-## Only run these tests if Internet connectivity is available
+## These tests will fail (within a 'try()') if Internet connectivity
+## is not available
 
-myurl <- "http://www.biostat.jhsph.edu/MCAPS/data/"
+myurl <- "http://www.biostat.jhsph.edu/MCAPS/data_v0.3/"
 
 ## create a 'remoteDB' object ##
 db <- new("remoteDB", url= myurl, dir = dir, name= "MCAPS")
@@ -97,3 +98,13 @@ dbFetch(dbLocal, "x.2")
 
 
 dbUnlink(dbLocal)
+
+################################################################################
+## Test MD5 digests
+
+db <- new("localDB", dir = "testMD5", name = "testMD5")
+dbInsert(db, "obj", rnorm(100))
+
+stopifnot(stashR:::validDataInternal(db, "obj"))
+
+dbUnlink(db)
