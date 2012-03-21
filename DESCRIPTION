@@ -1,7 +1,7 @@
 Package: stashR
-Version: 0.3-4
-Date: 2011-07-15
-Depends: R (>= 2.13.0), methods, filehash
+Version: 0.3-5
+Date: 2012-03-21
+Depends: R (>= 2.14.0), methods, filehash
 Imports: tools, digest
 LazyLoad: yes
 Collate: remoteDB.R localDB.R init.R util.R valid.R zzz.R
@@ -10,6 +10,6 @@ Author: Sandy Eckel, Roger D. Peng
 Maintainer: Roger D. Peng <rpeng@jhsph.edu>
 Description: A Set of Tools for Administering SHared Repositories
 License: GPL (>= 2)
-Packaged: 2011-07-21 18:22:02 UTC; rdpeng
+Packaged: 2012-03-21 13:54:34 UTC; rdpeng
 Repository: CRAN
-Date/Publication: 2011-07-23 14:43:09
+Date/Publication: 2012-03-21 15:23:32
